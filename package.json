@@ -2,6 +2,7 @@
   "name": "@xaliksss/eslint-config",
   "version": "3.0.0",
   "main": "index.js",
+  "type": "module",
   "keywords": [
     "eslint",
     "config",
