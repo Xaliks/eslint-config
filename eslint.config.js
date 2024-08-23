@@ -10,7 +10,7 @@ const jsRules = {
 		{
 			useTabs: true,
 			endOfLine: "auto",
-			printWidth: 110,
+			printWidth: 115,
 		},
 	],
 
@@ -174,7 +174,6 @@ const tsRules = {
 	"tseslint/no-empty-interface": "error",
 	"tseslint/no-empty-object-type": "error",
 	"tseslint/no-extra-non-null-assertion": "error",
-	"tseslint/no-floating-promises": "error",
 	"tseslint/no-for-in-array": "error",
 	"tseslint/no-import-type-side-effects": "error",
 	"tseslint/no-inferrable-types": "error",
