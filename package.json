@@ -19,12 +19,13 @@
   },
   "license": "MIT",
   "dependencies": {
+    "eslint-plugin-import": "^2.31.0",
     "eslint-plugin-prettier": "^5.2.1",
-    "globals": "^15.9.0",
-    "typescript-eslint": "^8.2.0"
+    "globals": "^15.11.0",
+    "typescript-eslint": "^8.11.0"
   },
   "peerDependencies": {
-    "eslint": "^9.9.0",
+    "eslint": "^9.13.0",
     "prettier": "^3.3.3"
   }
 }

@@ -1,8 +1,7 @@
-import tseslint from "typescript-eslint";
+import importPlugin from "eslint-plugin-import";
 import prettier from "eslint-plugin-prettier";
-// Ждем https://github.com/import-js/eslint-plugin-import/pull/2996
-// import importPlugin from "eslint-plugin-import";
 import globals from "globals";
+import tseslint from "typescript-eslint";
 
 const jsRules = {
 	"prettier/prettier": [
@@ -132,18 +131,40 @@ const jsRules = {
 	"operator-assignment": ["error", "always"],
 	"max-params": ["error", { max: 5 }],
 
-	// "import/export": "error",
-	// "import/no-deprecated": "error",
-	// "import/no-empty-named-blocks": "error",
-	// "import/no-extraneous-dependencies": "error",
-	// "import/no-mutable-exports": "error",
-	// "import/no-named-as-default-member": "error",
-	// "import/no-amd": "error",
-	// "import/no-import-module-exports": "error",
-	// "import/unambiguous": "error",
-	// "import/default": "error", // Под вопросом
-	// "import/named": "error", // Под вопросом
-	// "import/no-duplicates": "error",
+	"import/export": "error",
+	"import/no-deprecated": "error",
+	"import/no-empty-named-blocks": "error",
+	"import/no-extraneous-dependencies": "error",
+	"import/no-mutable-exports": "error",
+	"import/no-named-as-default-member": "error",
+	"import/no-unused-modules": "error", // ПОЧЕМУ ТО ПРИ { "unusedExports": true } ESLint couldn't find a configuration file. To set up a configuration file for this project, please run:
+	"import/no-amd": "error",
+	"import/no-commonjs": "error",
+	"import/no-import-module-exports": "error",
+	"import/unambiguous": "error",
+	"import/default": "error", // Под вопросом
+	"import/named": "error", // Под вопросом
+	"import/namespace": "error",
+	"import/no-absolute-path": "error",
+	"import/no-dynamic-require": "error",
+	"import/no-self-import": "error",
+	"import/no-useless-path-segments": "error",
+	"import/no-webpack-loader-syntax": "error",
+	"import/consistent-type-specifier-style": ["error", "prefer-top-level"],
+	"import/first": "error",
+	"import/newline-after-import": ["error", { count: 1, considerComments: false }],
+	"import/no-anonymous-default-export": "error",
+	"import/no-duplicates": "error",
+	"import/no-named-default": "error",
+	"import/order": [
+		"error",
+		{
+			groups: ["builtin", "external", "type", "internal", "parent", "sibling", "index", "object"],
+			"newlines-between": "always",
+			named: true,
+			alphabetize: { order: "asc" },
+		},
+	],
 };
 
 // https://typescript-eslint.io/rules/?=xdeprecated
@@ -168,15 +189,13 @@ const tsRules = {
 	"tseslint/no-array-delete": "error",
 	"tseslint/no-base-to-string": "error",
 	"tseslint/no-confusing-non-null-assertion": "error",
-	"tseslint/no-confusing-void-expression": ["error", { ignoreArrowShorthand: true }],
 	"tseslint/no-duplicate-enum-values": "error",
 	"tseslint/no-duplicate-type-constituents": "error",
 	"tseslint/no-empty-interface": "error",
 	"tseslint/no-empty-object-type": "error",
 	"tseslint/no-extra-non-null-assertion": "error",
-	"tseslint/no-floating-promises": "error",
 	"tseslint/no-for-in-array": "error",
-	"tseslint/no-import-type-side-effects": "error",
+	// "tseslint/no-import-type-side-effects": "error", // import/consistent-type-specifier-style
 	"tseslint/no-inferrable-types": "error",
 	"tseslint/no-invalid-void-type": "error",
 	"tseslint/no-meaningless-void-operator": "error",
@@ -312,7 +331,7 @@ export default tseslint.config(
 	// TypeScript
 	{
 		files: ["**/*.ts", "**/*.mts", "**/*.cts", "**/*.tsx"],
-		ignores: ["dist/**/*"],
+		ignores: ["**/dist/**"],
 
 		languageOptions: {
 			parserOptions: { project: true },
@@ -324,7 +343,7 @@ export default tseslint.config(
 		plugins: {
 			tseslint: tseslint.plugin,
 			prettier,
-			// import: importPlugin,
+			import: importPlugin,
 		},
 
 		rules: tsRules,
@@ -332,7 +351,7 @@ export default tseslint.config(
 	// JavaScript
 	{
 		files: ["**/*.js", "**/*.mjs", "**/*.cjs", "**/*.jsx"],
-		ignores: ["dist/**/*"],
+		ignores: ["**/dist/**"],
 
 		languageOptions: {
 			ecmaVersion: "latest",
@@ -342,7 +361,7 @@ export default tseslint.config(
 
 		plugins: {
 			prettier,
-			// import: importPlugin,
+			import: importPlugin,
 		},
 
 		rules: jsRules,
