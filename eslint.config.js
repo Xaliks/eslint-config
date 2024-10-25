@@ -9,7 +9,7 @@ const jsRules = {
 		{
 			useTabs: true,
 			endOfLine: "auto",
-			printWidth: 110,
+			printWidth: 115,
 		},
 	],
 
