@@ -20,6 +20,6 @@ jobs:
           node-version: '24.x'
           scope: '@xaliksss'
 
-      - run: yarn
-      - run: yarn build
+      - run: npm ci
+      - run: npm run build
       - run: npm publish --provenance --access public
