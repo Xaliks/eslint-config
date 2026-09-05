@@ -11,7 +11,7 @@ export const eslintRules: Linter.RulesRecord = {
 	"no-compare-neg-zero": "error",
 	"no-cond-assign": "error",
 	"no-const-assign": "error", // [TS]
-	"no-constant-binary-expression": "error",
+	"no-constant-binary-expression": ["error", { checkRelationalComparisons: true }],
 	"no-constant-condition": "error",
 	"no-constructor-return": "error",
 	"no-control-regex": "off", // запрещает делать regex с контрол-символами,
@@ -46,7 +46,7 @@ export const eslintRules: Linter.RulesRecord = {
 	"no-unassigned-vars": "error",
 	"no-undef": "error", // [TS]
 	"no-unexpected-multiline": "error",
-	"no-unmodified-loop-condition": "error",
+	"no-unmodified-loop-condition": ["error", { checkConditionalExpressions: true }],
 	"no-unreachable": "error", // [TS]
 	"no-unreachable-loop": "error",
 	"no-unsafe-finally": "error",
@@ -146,7 +146,7 @@ export const eslintRules: Linter.RulesRecord = {
 	"max-depth": "off",
 	"max-lines": "off",
 	"max-lines-per-function": "off",
-	"max-nested-callbacks": ["error", { max: 3 }],
+	"max-nested-callbacks": ["error", { max: 3, checkConstructorCallCallbacks: true }],
 	"max-params": ["error", { max: 6 }],
 	"max-statements": "off",
 	"new-cap": "off",

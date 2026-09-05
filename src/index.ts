@@ -2,11 +2,12 @@ import { defineConfig } from 'eslint/config';
 import globals from "globals";
 import tseslint from "typescript-eslint";
 import stylisticPlugin from "@stylistic/eslint-plugin";
-import importPlugin from "eslint-plugin-import";
+import importPlugin from "eslint-plugin-import-x";
+import nPlugin from "eslint-plugin-n";
 
 import { eslintRules } from "./rules/eslint.js";
 import { stylisticRules } from "./rules/stylistic.js";
-import { importRules } from "./rules/import.js";
+import { importRules } from "./rules/import-x.js";
 import { typescriptRules, typescriptTypeAwareRules } from "./rules/typescript.js";
 
 const IGNORES = [
@@ -37,7 +38,8 @@ export default defineConfig(
 
         plugins: {
             "@stylistic": stylisticPlugin,
-            import: importPlugin,
+            "import-x": importPlugin,
+            n: nPlugin,
         },
 
         rules: {

@@ -42,6 +42,7 @@ export const typescriptRules: Linter.RulesRecord = {
 	"@typescript-eslint/method-signature-style": ["error", "method"],
 	"@typescript-eslint/no-array-constructor": "off", // есть no-array-constructor
 	"@typescript-eslint/no-confusing-non-null-assertion": "error",
+	"@typescript-eslint/no-deprecated": "error",
 	"@typescript-eslint/no-dupe-class-members": "off", // оно в TS вообще не нужно
 	"@typescript-eslint/no-duplicate-enum-values": "error",
 	"@typescript-eslint/no-dynamic-delete": "error",
@@ -54,7 +55,6 @@ export const typescriptRules: Linter.RulesRecord = {
 	"@typescript-eslint/no-inferrable-types": "error",
 	"@typescript-eslint/no-invalid-this": "off", // есть no-invalid-this
 	"@typescript-eslint/no-invalid-void-type": ["error", { allowAsThisParameter: true }],
-	"@typescript-eslint/no-loop-func": "off", // есть no-loop-func
 	"@typescript-eslint/no-magic-numbers": "off", // есть no-magic-numbers
 	"@typescript-eslint/no-misused-new": "error",
 	"@typescript-eslint/no-namespace": "error",
@@ -63,7 +63,6 @@ export const typescriptRules: Linter.RulesRecord = {
 	"@typescript-eslint/no-non-null-assertion": "off",
 	"@typescript-eslint/no-redeclare": "off", // TS сам справится
 	"@typescript-eslint/no-require-imports": "error",
-	"@typescript-eslint/no-restricted-imports": "off", // есть no-restricted-imports
 	"@typescript-eslint/no-restricted-types": "off",
 	"@typescript-eslint/no-shadow": "off", // есть no-shadow
 	"@typescript-eslint/no-this-alias": "error",
@@ -146,11 +145,7 @@ export const typescriptTypeAwareRules: Linter.RulesRecord = {
 
 	"@typescript-eslint/no-array-delete": "error",
 	"@typescript-eslint/no-base-to-string": "error",
-	"@typescript-eslint/no-confusing-void-expression": ["error",
-		{
-			ignoreVoidReturningFunctions: true,
-		}
-	],
+	"@typescript-eslint/no-confusing-void-expression": "off",
 	"@typescript-eslint/no-floating-promises": ["error", {
 		ignoreIIFE: true,
 	}],
