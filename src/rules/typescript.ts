@@ -72,12 +72,19 @@ export const typescriptRules: Linter.RulesRecord = {
 	"@typescript-eslint/no-unsafe-function-type": "error",
 	"@typescript-eslint/no-unused-expressions": "off", // есть no-unused-expressions
 
+	// core еще не до конца нагнал
 	"no-unused-private-class-members": "off",
-	"@typescript-eslint/no-unused-private-class-members": "error", // core еще не до конца нагнал
+	"@typescript-eslint/no-unused-private-class-members": "error",
 
+	// core еще не до конца нагнал
 	"no-unused-vars": "off",
-	"@typescript-eslint/no-unused-vars": "off", // core еще не до конца нагнал
-	
+	"@typescript-eslint/no-unused-vars": ["error", {
+        ignoreRestSiblings: true,
+        ignoreClassWithStaticInitBlock: true,
+        argsIgnorePattern: "^_",
+        enableAutofixRemoval: { imports: true },
+    }],
+
 	"@typescript-eslint/no-use-before-define": "off", // есть no-use-before-define
 	"@typescript-eslint/no-useless-constructor": "off", // есть no-useless-constructor
 	"@typescript-eslint/no-useless-empty-export": "error",
@@ -92,12 +99,12 @@ export const typescriptRules: Linter.RulesRecord = {
 	"@typescript-eslint/triple-slash-reference": "error",
 	"@typescript-eslint/unified-signatures": "error",
 };
- 
+
 export const typescriptTypeAwareRules: Linter.RulesRecord = {
 	"@typescript-eslint/await-thenable": "error",
 	"@typescript-eslint/consistent-return": "off", // tsconfig.noImplicitReturns делает это лучше
 	"@typescript-eslint/consistent-type-exports": ["error", { fixMixedExportsWithInlineTypeSpecifier: false }], // import/consistent-type-specifier-style
-	
+
 	"dot-notation": "off",
 	"@typescript-eslint/dot-notation": ["error", {
 		allowPrivateClassPropertyAccess: true,
@@ -185,7 +192,7 @@ export const typescriptTypeAwareRules: Linter.RulesRecord = {
 	}],
 
 	"prefer-destructuring": "off",
-	"@typescript-eslint/prefer-destructuring": ["error", { array: true, object: false }],	
+	"@typescript-eslint/prefer-destructuring": ["error", { array: true, object: false }],
 
 	"@typescript-eslint/prefer-find": "error",
 	"@typescript-eslint/prefer-includes": "error",
@@ -222,6 +229,7 @@ export const typescriptTypeAwareRules: Linter.RulesRecord = {
 		allow: [
 			{ from: "lib", name: ["Error", "URL", "URLSearchParams"] },
 			{ from: "package", name: ["Big"], package: "big.js" },
+			{ from: "package", name: ["User", "GuildMember", "PartialGuildMember", "Channel", "GuildChannel", "Role"], package: "discord.js" },
 		],
 	}],
 

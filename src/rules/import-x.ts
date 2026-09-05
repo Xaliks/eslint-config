@@ -44,7 +44,7 @@ export const importRules: Linter.RulesRecord = {
 	"import-x/no-self-import": "error",
 	"import-x/no-unassigned-import": "off",
 	"import-x/no-unresolved": "off",
-	"import-x/no-unused-modules": ["error", { unusedExports: true, missingExports: false }],
+	"import-x/no-unused-modules": "off", // с eslint v10 no-op, есть no-unused-vars
 	"import-x/no-useless-path-segments": "error",
 	"import-x/no-webpack-loader-syntax": "error",
 	"import-x/order": ["error",
@@ -53,7 +53,6 @@ export const importRules: Linter.RulesRecord = {
 			"newlines-between": "always",
 			alphabetize: { order: "asc" },
 			named: true,
-			"newlines-between-types": "ignore",
 		},
 	],
 	"import-x/prefer-default-export": "off",
