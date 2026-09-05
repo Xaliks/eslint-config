@@ -12,17 +12,14 @@ permissions:
 jobs:
   build:
     runs-on: ubuntu-latest
-    env:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
     steps:
       - uses: actions/checkout@v7
-      # Setup .npmrc file to publish to npm
+
       - uses: actions/setup-node@v7
         with:
           node-version: '24.x'
-          registry-url: 'https://registry.npmjs.org'
-          # Defaults to the user or organization that owns the workflow file
           scope: '@xaliksss'
+
       - run: yarn
       - run: yarn build
       - run: npm publish --provenance --access public
