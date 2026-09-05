@@ -3,6 +3,12 @@ on:
   release:
     types: [published]
   workflow_dispatch: # Позволяет запускать вручную из браузера
+
+# Добавляем необходимые права для генерации provenance и чтения репозитория
+permissions:
+  contents: read
+  id-token: write
+
 jobs:
   build:
     runs-on: ubuntu-latest
