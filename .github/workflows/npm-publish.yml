@@ -20,6 +20,6 @@ jobs:
           node-version: '24.x'
           scope: '@xaliksss'
 
-      - run: npm ci
-      - run: npm run build
-      - run: npm publish --provenance --access public
+      - run: yarn install --frozen-lockfile
+      - run: yarn build
+      - run: yarn publish --access public

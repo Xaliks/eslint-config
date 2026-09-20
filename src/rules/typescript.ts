@@ -51,6 +51,7 @@ export const typescriptRules: Linter.RulesRecord = {
 	"@typescript-eslint/no-explicit-any": "error",
 	"@typescript-eslint/no-extra-non-null-assertion": "error",
 	"@typescript-eslint/no-extraneous-class": "off",
+	"@typescript-eslint/no-generated-empty-object-type": "error",
 	"@typescript-eslint/no-import-type-side-effects": "off", // есть import/consistent-type-specifier-style
 	"@typescript-eslint/no-inferrable-types": "error",
 	"@typescript-eslint/no-invalid-this": "off", // есть no-invalid-this
