@@ -1,4 +1,4 @@
-import { Linter } from "eslint";
+import type { Linter } from "eslint";
 
 export const importRules: Linter.RulesRecord = {
 	"import-x/consistent-type-specifier-style": ["error", "prefer-top-level"],
@@ -20,7 +20,7 @@ export const importRules: Linter.RulesRecord = {
 	"import-x/no-cycle": ["error", {
 		maxDepth: 4, // Возможно придется обновить на 1
 		ignoreExternal: true,
-		allowUnsafeDynamicCyclicDependency: false
+		allowUnsafeDynamicCyclicDependency: false,
 	}],
 	"import-x/no-default-export": "off",
 	"import-x/no-deprecated": "off", // С этим лучше справляется @typescript-eslint/no-deprecated
@@ -39,7 +39,7 @@ export const importRules: Linter.RulesRecord = {
 	"import-x/no-nodejs-modules": "off",
 	"import-x/no-relative-packages": "off",
 	"import-x/no-relative-parent-imports": "off",
-	"import-x/no-rename-default": "error",
+	"import-x/no-rename-default": "off",
 	"import-x/no-restricted-paths": "off", // в связке с no-restricted-imports от Eslint
 	"import-x/no-self-import": "error",
 	"import-x/no-unassigned-import": "off",
@@ -47,14 +47,12 @@ export const importRules: Linter.RulesRecord = {
 	"import-x/no-unused-modules": "off", // с eslint v10 no-op, есть no-unused-vars
 	"import-x/no-useless-path-segments": "error",
 	"import-x/no-webpack-loader-syntax": "error",
-	"import-x/order": ["error",
-		{
-			groups: ["builtin", "external", "type", "internal", "parent", "sibling", "index", "object"],
-			"newlines-between": "always",
-			alphabetize: { order: "asc" },
-			named: true,
-		},
-	],
+	"import-x/order": ["error", {
+		groups: ["builtin", "external", "type", "internal", "parent", "sibling", "index", "object"],
+		"newlines-between": "always",
+		alphabetize: { order: "asc" },
+		named: true,
+	}],
 	"import-x/prefer-default-export": "off",
 	"import-x/prefer-namespace-import": "off",
 	"import-x/unambiguous": "error",

@@ -1,82 +1,79 @@
-import { defineConfig } from 'eslint/config';
-import globals from "globals";
-import tseslint from "typescript-eslint";
 import stylisticPlugin from "@stylistic/eslint-plugin";
+import { defineConfig } from "eslint/config";
 import importPlugin from "eslint-plugin-import-x";
 import nPlugin from "eslint-plugin-n";
+import globals from "globals";
+import tseslint from "typescript-eslint";
 
+import type { XaliksConfigOptions } from "./config.js";
+
+import { DEFAULT_CONFIG } from "./config.js";
 import { eslintRules } from "./rules/eslint.js";
-import { stylisticRules } from "./rules/stylistic.js";
 import { importRules } from "./rules/import-x.js";
+import { stylisticRules } from "./rules/stylistic.js";
 import { typescriptRules, typescriptTypeAwareRules } from "./rules/typescript.js";
 
-const IGNORES = [
-    "**/dist/**",
-    "**/node_modules/**",
-];
+export default function createConfig(_options: XaliksConfigOptions = {}) {
+	const options = {
+		...DEFAULT_CONFIG,
+		..._options,
+	};
 
-const JS_FILES = ["**/*.js", "**/*.mjs", "**/*.cjs", "**/*.jsx"];
-const TS_FILES = ["**/*.ts", "**/*.mts", "**/*.cts", "**/*.tsx"];
-
-export default defineConfig(
-    {
-        ignores: IGNORES,
-    },
-
-    // Общие правила для JS и TS
-    {
-        files: [...JS_FILES, ...TS_FILES],
-
-        languageOptions: {
-            ecmaVersion: "latest",
-            sourceType: "module",
-            globals: {
-                ...globals.node,
-                NodeJS: "off",
-            },
-        },
-
-        plugins: {
-            "@stylistic": stylisticPlugin,
-            "import-x": importPlugin,
-            n: nPlugin,
-        },
-
-        rules: {
-            ...eslintRules,
-            ...stylisticRules,
-            ...importRules,
-        },
-    },
-
-    // overrides для TS
-    {
-        files: TS_FILES,
-
-        languageOptions: {
-            parser: tseslint.parser,
-            parserOptions: { project: false },
-        },
-
-        plugins: {
-            "@typescript-eslint": tseslint.plugin,
-        },
-
-        rules: typescriptRules,
-    },
-    // type-aware правила
-    {
-		files: TS_FILES,
- 
-		languageOptions: {
-			parser: tseslint.parser,
-			parserOptions: { project: true },
+	return defineConfig(
+		{
+			ignores: options.ignores,
 		},
- 
-		plugins: {
-			"@typescript-eslint": tseslint.plugin,
+
+		// Общие правила для JS и TS
+		{
+			files: [...options.jsFiles, ...options.tsFiles],
+
+			languageOptions: {
+				ecmaVersion: "latest",
+				sourceType: "module",
+				globals: {
+					...globals.node,
+					NodeJS: "off",
+				},
+			},
+
+			plugins: {
+				"@stylistic": stylisticPlugin,
+				"import-x": importPlugin,
+				n: nPlugin,
+			},
+
+			rules: {
+				...eslintRules,
+				...stylisticRules(options),
+				...importRules,
+			},
 		},
- 
-		rules: typescriptTypeAwareRules,
-	},
-);
+
+		// overrides для TS
+		{
+			files: options.tsFiles,
+
+			languageOptions: {
+				parser: tseslint.parser,
+				parserOptions: {
+					projectService: {
+						allowDefaultProject: [
+							"eslint.config.ts",
+							"sandbox.ts",
+						],
+					},
+				},
+			},
+
+			plugins: {
+				"@typescript-eslint": tseslint.plugin,
+			},
+
+			rules: {
+				...typescriptRules,
+				...typescriptTypeAwareRules,
+			},
+		},
+	);
+}

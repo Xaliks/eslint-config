@@ -1,4 +1,4 @@
-import { Linter } from "eslint";
+import type { Linter } from "eslint";
 
 export const typescriptRules: Linter.RulesRecord = {
 	// TypeScript знает лучше
@@ -80,11 +80,11 @@ export const typescriptRules: Linter.RulesRecord = {
 	// core еще не до конца нагнал
 	"no-unused-vars": "off",
 	"@typescript-eslint/no-unused-vars": ["error", {
-        ignoreRestSiblings: true,
-        ignoreClassWithStaticInitBlock: true,
-        argsIgnorePattern: "^_",
-        enableAutofixRemoval: { imports: true },
-    }],
+		ignoreRestSiblings: true,
+		ignoreClassWithStaticInitBlock: true,
+		argsIgnorePattern: "^_",
+		enableAutofixRemoval: { imports: true },
+	}],
 
 	"@typescript-eslint/no-use-before-define": "off", // есть no-use-before-define
 	"@typescript-eslint/no-useless-constructor": "off", // есть no-useless-constructor
@@ -118,38 +118,31 @@ export const typescriptTypeAwareRules: Linter.RulesRecord = {
 	"id-length": "off",
 	"no-underscore-dangle": "off",
 	camelcase: "off",
-	"@typescript-eslint/naming-convention": ["error",
-		{
-			selector: "default",
-			format: null,
-			leadingUnderscore: "allowSingleOrDouble",
-		},
-		{
-			selector: ["variableLike", "import"],
-			format: ["camelCase", "PascalCase"],
-			leadingUnderscore: "allowSingleOrDouble",
-		},
-		{
-			selector: ["method", "classProperty", "typeProperty"],
-			format: ["camelCase"],
-			leadingUnderscore: "allowSingleOrDouble",
-		},
-		{
-			selector: ["typeLike", "enumMember"],
-			format: ["PascalCase"],
-			leadingUnderscore: "forbid",
-		},
-		{
-			selector: "variable",
-			modifiers: ["const", "global"],
-			format: ["UPPER_CASE", "camelCase", "PascalCase"],
-		},
-		{
-			selector: "variable",
-			modifiers: ["destructured"],
-			format: null, // const { user_id, created_at } = await response.json();
-		},
-	],
+	"@typescript-eslint/naming-convention": ["error", {
+		selector: "default",
+		format: null,
+		leadingUnderscore: "allowSingleOrDouble",
+	}, {
+		selector: ["variableLike", "import"],
+		format: ["camelCase", "PascalCase"],
+		leadingUnderscore: "allowSingleOrDouble",
+	}, {
+		selector: ["method", "classProperty", "typeProperty"],
+		format: ["camelCase"],
+		leadingUnderscore: "allowSingleOrDouble",
+	}, {
+		selector: ["typeLike", "enumMember"],
+		format: ["PascalCase"],
+		leadingUnderscore: "forbid",
+	}, {
+		selector: "variable",
+		modifiers: ["const", "global"],
+		format: ["UPPER_CASE", "camelCase", "PascalCase"],
+	}, {
+		selector: "variable",
+		modifiers: ["destructured"],
+		format: null, // const { user_id, created_at } = await response.json();
+	}],
 
 	"@typescript-eslint/no-array-delete": "error",
 	"@typescript-eslint/no-base-to-string": "error",
@@ -189,7 +182,7 @@ export const typescriptTypeAwareRules: Linter.RulesRecord = {
 
 	"no-throw-literal": "off",
 	"@typescript-eslint/only-throw-error": ["error", {
-		allowRethrowing: true
+		allowRethrowing: true,
 	}],
 
 	"prefer-destructuring": "off",
