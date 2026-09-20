@@ -1,6 +1,6 @@
 {
   "name": "@xaliksss/eslint-config",
-  "version": "4.0.4",
+  "version": "5.0.0",
   "main": "dist/index.js",
   "type": "module",
   "author": {
