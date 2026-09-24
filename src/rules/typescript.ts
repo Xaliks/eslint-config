@@ -20,6 +20,9 @@ export const typescriptRules: Linter.RulesRecord = {
 	"no-unsafe-negation": "off",
 	"no-invalid-this": "off",
 	"no-redeclare": "off",
+	"import-x/default": "off",
+	"import-x/named": "off",
+	"import-x/namespace": "off",
 
 	"@typescript-eslint/adjacent-overload-signatures": "error",
 	"@typescript-eslint/array-type": ["error", { default: "array-simple" }],
@@ -147,11 +150,16 @@ export const typescriptTypeAwareRules: Linter.RulesRecord = {
 	"@typescript-eslint/no-array-delete": "error",
 	"@typescript-eslint/no-base-to-string": "error",
 	"@typescript-eslint/no-confusing-void-expression": "off",
+	"@typescript-eslint/no-duplicate-type-constituents": "error",
 	"@typescript-eslint/no-floating-promises": ["error", {
 		ignoreIIFE: true,
 	}],
 	"@typescript-eslint/no-for-in-array": "error",
-	"@typescript-eslint/no-implied-eval": "off", // есть no-implied-eval
+
+	"no-implied-eval": "off", // core ловит только строковые литералы
+	"no-new-func": "off",
+	"@typescript-eslint/no-implied-eval": "error", // + любые string по типу и new Function
+
 	"@typescript-eslint/no-meaningless-void-operator": "error",
 	"@typescript-eslint/no-misused-promises": ["error", {
 		checksVoidReturn: {
@@ -162,7 +170,9 @@ export const typescriptTypeAwareRules: Linter.RulesRecord = {
 	"@typescript-eslint/no-mixed-enums": "error",
 	"@typescript-eslint/no-redundant-type-constituents": "error",
 	"@typescript-eslint/no-unnecessary-boolean-literal-compare": "error",
-	"@typescript-eslint/no-unnecessary-condition": "error",
+	"@typescript-eslint/no-unnecessary-condition": ["error", {
+		allowConstantLoopConditions: "only-allowed-literals", // while (true)
+	}],
 	"@typescript-eslint/no-unnecessary-qualifier": "error",
 	"@typescript-eslint/no-unnecessary-template-expression": "error",
 	"@typescript-eslint/no-unnecessary-type-arguments": "error",
@@ -190,7 +200,9 @@ export const typescriptTypeAwareRules: Linter.RulesRecord = {
 
 	"@typescript-eslint/prefer-find": "error",
 	"@typescript-eslint/prefer-includes": "error",
-	"@typescript-eslint/prefer-nullish-coalescing": "error",
+	"@typescript-eslint/prefer-nullish-coalescing": ["error", {
+		ignoreIfStatements: true, // if (!a) a = b; -> a ||= b делает logical-assignment-operators, дальше это правило предложит ??=
+	}],
 	"@typescript-eslint/prefer-optional-chain": "error",
 
 	"prefer-promise-reject-errors": "off",

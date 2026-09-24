@@ -21,7 +21,7 @@ export const eslintRules: Linter.RulesRecord = {
 	"no-dupe-else-if": "error",
 	"no-dupe-keys": "error", // [TS]
 	"no-duplicate-case": "error",
-	"no-duplicate-imports": ["error", { allowSeparateTypeImports: true }],
+	"no-duplicate-imports": "off", // есть import-x/no-duplicates
 	"no-empty-character-class": "error",
 	"no-empty-pattern": "error",
 	"no-ex-assign": "error",
@@ -37,6 +37,7 @@ export const eslintRules: Linter.RulesRecord = {
 	"no-obj-calls": "error", // [TS]
 	"no-promise-executor-return": "error",
 	"no-prototype-builtins": "error",
+	"no-restricted-syntax": "off",
 	"no-self-assign": "error",
 	"no-self-compare": "error",
 	"no-setter-return": "error", // [TS]
@@ -53,7 +54,11 @@ export const eslintRules: Linter.RulesRecord = {
 	"no-unsafe-negation": "error", // [TS]
 	"no-unsafe-optional-chaining": "error",
 	"no-unused-private-class-members": "error",
-	"no-unused-vars": "error",
+	"no-unused-vars": ["error", { // [TS]
+		ignoreRestSiblings: true,
+		ignoreClassWithStaticInitBlock: true,
+		argsIgnorePattern: "^_",
+	}],
 	"no-use-before-define": ["error", {
 		functions: false,
 		classes: false,
@@ -111,15 +116,15 @@ export const eslintRules: Linter.RulesRecord = {
 	"require-yield": "error",
 	"sort-imports": "off", // установлен другой плагин import
 	"sort-keys": "off",
-	"sort-vars": "error",
+	"sort-vars": "off", // не нужен при one-var: never
 	strict: "off",
 	"symbol-description": "error",
-	"vars-on-top": "error",
+	"vars-on-top": "off", // не нужен при no-var
 	yoda: "error",
 	"unicode-bom": "error",
 	"accessor-pairs": "error", // Спорно, возможно удалится
 	"arrow-body-style": "off",
-	"block-scoped-var": "error",
+	"block-scoped-var": "off", // не нужен при no-var
 	camelcase: "off", // есть naming-convention с более детальной настройкой
 	"capitalized-comments": "off",
 	"class-methods-use-this": "off",

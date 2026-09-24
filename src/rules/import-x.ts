@@ -2,7 +2,7 @@ import type { Linter } from "eslint";
 
 export const importRules: Linter.RulesRecord = {
 	"import-x/consistent-type-specifier-style": ["error", "prefer-top-level"],
-	"import-x/default": "error",
+	"import-x/default": "error", // [TS]
 	"import-x/dynamic-import-chunkname": "off",
 	"import-x/export": "error",
 	"import-x/exports-last": "off",
@@ -10,8 +10,8 @@ export const importRules: Linter.RulesRecord = {
 	"import-x/first": "error",
 	"import-x/group-exports": "off",
 	"import-x/max-dependencies": "off",
-	"import-x/named": "error",
-	"import-x/namespace": "error",
+	"import-x/named": "error", // [TS]
+	"import-x/namespace": "error", // [TS]
 	"import-x/newline-after-import": ["error", { count: 1 }],
 	"import-x/no-absolute-path": "error",
 	"import-x/no-amd": "error",
@@ -24,7 +24,7 @@ export const importRules: Linter.RulesRecord = {
 	}],
 	"import-x/no-default-export": "off",
 	"import-x/no-deprecated": "off", // С этим лучше справляется @typescript-eslint/no-deprecated
-	"import-x/no-duplicates": "off", // уже используем extensions
+	"import-x/no-duplicates": "error", // type и value импорты считаются отдельно (prefer-inline: false)
 	"import-x/no-dynamic-require": "error",
 	"import-x/no-empty-named-blocks": "error",
 	"import-x/no-extraneous-dependencies": "error",

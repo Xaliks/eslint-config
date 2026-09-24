@@ -18,7 +18,7 @@ export const stylisticRules = (options: XaliksConfigOptions): Linter.RulesRecord
 		"@stylistic/generator-star-spacing": "error",
 		"@stylistic/implicit-arrow-linebreak": "error",
 		"@stylistic/indent": ["error", "tab"],
-		"@stylistic/indent-binary-ops": ["error", 1],
+		"@stylistic/indent-binary-ops": ["error", "tab"],
 		// JSX пока игнорирую. потом сделаю
 		"@stylistic/jsx-child-element-spacing": "off",
 		"@stylistic/jsx-closing-bracket-location": "off",
@@ -34,7 +34,7 @@ export const stylisticRules = (options: XaliksConfigOptions): Linter.RulesRecord
 		"@stylistic/jsx-newline": "off",
 		"@stylistic/jsx-one-expression-per-line": "off",
 		"@stylistic/jsx-pascal-case": "off",
-		"@stylistic/jsx-props-style": "off",
+		"@stylistic/exp-jsx-props-style": "off", // experimental
 		"@stylistic/jsx-quotes": "off",
 		"@stylistic/jsx-self-closing-comp": "off",
 		"@stylistic/jsx-shorthand-boolean": "off",
@@ -83,9 +83,9 @@ export const stylisticRules = (options: XaliksConfigOptions): Linter.RulesRecord
 				ImportAttributes: { singleLine: { spacing: "always" } }, //       import ... with { a, b, c }
 				ObjectExpression: { singleLine: { spacing: "always" } }, //       a = { a, b, c }
 				ObjectPattern: { singleLine: { spacing: "always" } }, //          { a, b, c } = d
-				// [TODO]: beta 7. multiline -> multiLine
+				// [TODO]: ждем beta 7. multiline -> multiLine
 				TSInterfaceBody: { singleLine: { spacing: "always", maxItems: 1 } }, // interface A { a } | interface A { a,\n b }
-				// [TODO]: beta 7. multiline -> multiLine
+				// [TODO]: ждем beta 7. multiline -> multiLine
 				TSEnumBody: { singleLine: { maxItems: 0 } }, //                   enum {\n a,\n b }
 				TSTypeLiteral: { singleLine: { spacing: "always" } }, //          a: { b: B, c: D }
 				JSONObjectExpression: { singleLine: { spacing: "always" } }, //   "a": { "b": "c" }
@@ -148,6 +148,7 @@ export const stylisticRules = (options: XaliksConfigOptions): Linter.RulesRecord
 				"?": "before",
 				":": "before",
 				"|": "before",
+				"&": "before",
 			},
 		}],
 		"@stylistic/padded-blocks": ["error", "never"],
